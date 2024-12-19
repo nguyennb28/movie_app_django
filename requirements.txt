@@ -1,0 +1,6 @@
+pillow
+Django==5.1.4
+django-cors-headers==4.6.0
+python-dotenv==1.0.1
+psycopg2==2.9.10
+Faker==33.1.0

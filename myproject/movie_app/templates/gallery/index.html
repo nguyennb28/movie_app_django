@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block title %}Ảnh{% endblock %} 
+{% block content %}
+<a href="{% url 'home' %}" class="btn btn-primary">Quay lại</a>
+<h1>
+    Ảnh
+</h1>
+<div class="grid">
+    {% for gallery in galleries %}
+    <div class="gallery-item">
+        <a href="{{ gallery.image.url }}">
+            <img src="{{ gallery.image.url }}" alt="{{ gallery.title }}" style="width: 100%; height: auto;">
+        </a>
+        <p>{{ gallery.title }}</p>
+        {% if gallery.video %}
+            <p><a href="{{ gallery.video.url }}">Xem video</a></p>
+        {% else %}
+            <p>No video available</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

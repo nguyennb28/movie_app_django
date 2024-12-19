@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+{% block title %}Trang chủ{% endblock %} 
+{% block content %}
+<!-- Navbar -->
+<div class="navbar">
+  <ul>
+    <li><a href="{% url 'gallery' %}">Ảnh</a></li>
+  </ul>
+</div>
+<!-- Main content -->
+<div class="main-content">
+    <div id="time"></div>
+</div>
+<!-- Footer -->
+<!-- Javascript -->
+<script>
+    $(document).ready(function() {
+        function updateTime() {
+            var time = new Date();
+            var day = time.getDate();
+            var month = time.getMonth() + 1; // Months are zero-based
+            var year = time.getFullYear();
+            var h = time.getHours();
+            var m = time.getMinutes();
+            var s = time.getSeconds();
+            day = day < 10 ? '0' + day : day;
+            month = month < 10 ? '0' + month : month;
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            var dateString = day + '/' + month + '/' + year;
+            var timeString = h + ':' + m + ':' + s;
+            $('#time').html(dateString + ' ' + timeString);
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    });
+</script>
+{% endblock %}
